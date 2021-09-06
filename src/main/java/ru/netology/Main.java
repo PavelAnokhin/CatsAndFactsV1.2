@@ -30,13 +30,12 @@ public class Main
                         .build())
                 .build();
 
-        HttpGet request = new HttpGet("https://cat-fact.herokuapp.com/facts");
+        HttpGet request = new HttpGet("https://raw.githubusercontent.com/netology-code/jd-homeworks/master/http/task1/cats");
         CloseableHttpResponse response = httpClient.execute(request);
 
         List<FactsAboutCats> factsAboutCats = mapper.readValue(response.getEntity().getContent(),
                 new TypeReference<List<FactsAboutCats>>() {});
 
-        factsAboutCats.stream().filter(value -> value.getType().equals("cat"))
-                .forEach(System.out::println);
+        factsAboutCats.stream().filter(value -> value.getUpvotes() != 0 && value.getUpvotes() > 0).forEach(System.out::println);
     }
 }
