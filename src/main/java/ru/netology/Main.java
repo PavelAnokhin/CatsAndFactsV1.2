@@ -36,6 +36,6 @@ public class Main
         List<FactsAboutCats> factsAboutCats = mapper.readValue(response.getEntity().getContent(),
                 new TypeReference<List<FactsAboutCats>>() {});
 
-        factsAboutCats.stream().filter(value -> value.getUpvotes() != 0 && value.getUpvotes() > 0).forEach(System.out::println);
+        factsAboutCats.stream().filter(value -> value.getUpvotes() != 0).forEach(System.out::println);
     }
 }
